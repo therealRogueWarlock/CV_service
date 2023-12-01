@@ -2,7 +2,7 @@ from io import BytesIO
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse, Response
 from PIL import Image
-from model import model
+from model import yolo_model_pretrained
 
 app = FastAPI()
 
@@ -10,13 +10,13 @@ app = FastAPI()
 def home():
     return "Hallo im runnin!"
 
-@app.post("/detect_objects/")
+@app.post("/detect_objects")
 async def detect_objects(image:UploadFile = File(...)):
     # convert uploadfile to Pil image 
     image_file = Image.open(BytesIO(await image.read()))
   
     # get predidted image
-    predicted_img = model.get_objects_detected(image_file)
+    predicted_img = yolo_model_pretrained.get_objects_detected(image_file)
 
     # convert pil image to bytes
     predicted_img_bytes= image_to_byte_array(predicted_img)
