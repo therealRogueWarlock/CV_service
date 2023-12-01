@@ -4,7 +4,6 @@ from fastapi.responses import FileResponse, Response
 from PIL import Image
 from model import model
 
-
 app = FastAPI()
 
 @app.get("/")
@@ -23,11 +22,6 @@ async def detect_objects(image:UploadFile = File(...)):
     predicted_img_bytes= image_to_byte_array(predicted_img)
     
     return Response(content=predicted_img_bytes, media_type="image/jpg")
-
-
-
-
-
 
 def image_to_byte_array(image: Image) -> bytes:
   # BytesIO is a file-like buffer stored in memory
