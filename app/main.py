@@ -1,3 +1,4 @@
+#!/bin/python3
 from io import BytesIO
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse, Response
@@ -43,4 +44,4 @@ def image_to_byte_array(image: Image) -> bytes:
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="0.0.0.0", port=88, log_level="info")
+    uvicorn.run("main:app", host="0.0.0.0", port=80, log_level="info")
