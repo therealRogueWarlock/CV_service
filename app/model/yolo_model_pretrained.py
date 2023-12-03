@@ -43,6 +43,7 @@ def get_predicted_classes(results):
     # a dict af all classes
     class_dict = results[0].names
 
+    # extract predicted classes from results
     for tensor in results[0].boxes.cls:
         predicted_class = class_dict[int(tensor.item())]
         if predicted_class not in predicted_classes:
