@@ -3,7 +3,7 @@ from io import BytesIO
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse, Response
 from PIL import Image
-from model import yolo_model_pretrained
+from app.model import yolo_model_pretrained
 
 app = FastAPI()
 
@@ -43,5 +43,5 @@ def image_to_byte_array(image: Image) -> bytes:
 
 if __name__ == "__main__":
     import uvicorn
-
+    print("should not run in container")
     uvicorn.run("main:app", host="0.0.0.0", port=80, log_level="info")
