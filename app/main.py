@@ -28,6 +28,7 @@ async def detect_objects(image: UploadFile = File(...)):
     predicted_img_bytes = image_to_byte_array(predicted_img)
 
     response = Response(content=predicted_img_bytes, media_type="image/jpg")
+    response.headers.append("classes", predicted_classes)
     return response
 
 
