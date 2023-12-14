@@ -10,16 +10,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 print("open pickle file")
 with open(f"{BASE_DIR}/object-detection-0.1.0.pkl", 'rb') as file:
     print("load pickle file")
-    yolo_model = pickle.load(file)
+    model = pickle.load(file)
 
 print("Ml rdy!")
 
-
 def get_objects_detected(image) -> Image:
-    print(type(image))
-    print(image)
 
-    results = yolo_model.predict(image)
+    results = model.predict(image)
 
     predicted_im = get_img_with_predicted(results)
 
